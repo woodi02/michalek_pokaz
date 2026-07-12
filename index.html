@@ -2,62 +2,67 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
+    <!-- Meta viewport jest kluczowy dla responsywności na telefonach! -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Michałek pokaż</title>
+    <title>Akcja Ratunkowa: Michał</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
 
     <style>
-        /* Główne ustawienia tła i fontu */
         body {
             font-family: 'Poppins', sans-serif;
             text-align: center;
-            /* Ciemny, elegancki gradient w tle */
             background: linear-gradient(135deg, #141e30, #243b55);
             color: white;
             margin: 0;
-            padding: 20px;
+            padding: 15px; /* Zoptymalizowany padding pod mobile */
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            box-sizing: border-box; 
         }
 
-        /* Główny kontener w stylu Glassmorphism (szklany panel) */
         .card {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
-            padding: 40px 30px;
+            padding: 40px 20px;
             max-width: 500px;
             width: 100%;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
             animation: fadeIn 1s ease-in-out;
+            box-sizing: border-box;
         }
 
-        /* Świecący nagłówek w piwnym kolorze */
         .glow-title {
-            font-size: 2.2em;
+            font-size: 2em;
             font-weight: 900;
             text-transform: uppercase;
             color: #ffb703;
             text-shadow: 0 0 10px rgba(255, 183, 3, 0.5), 0 0 20px rgba(255, 183, 3, 0.3);
             margin-top: 0;
             margin-bottom: 10px;
+            line-height: 1.2;
         }
 
         .subtitle {
-            font-size: 1.1em;
+            font-size: 1.05em;
             color: #ddd;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+            padding: 0 10px;
         }
 
-        /* Zdjęcie z obramowaniem i animacją najechania myszką */
+        .highlight {
+            color: #ffb703;
+            font-weight: bold;
+        }
+
         .image-wrapper img {
-            max-width: 250px;
-            width: 100%;
+            max-width: 100%; /* Elastyczne zdjęcie - kluczowe dla mobile! */
+            width: 280px; 
             border-radius: 20px;
             border: 4px solid #ffb703;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
@@ -69,24 +74,22 @@
             box-shadow: 0 15px 30px rgba(255, 183, 3, 0.4);
         }
 
-        /* Sekcja ze statystykami */
         .stats {
             background: rgba(0, 0, 0, 0.3);
             border-radius: 15px;
-            padding: 25px 20px;
-            margin-top: 30px;
+            padding: 20px 15px;
+            margin-top: 25px;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .stats h2 {
-            font-size: 1.2em;
+            font-size: 1.1em;
             color: #aaa;
             margin-top: 0;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
 
-        /* Pasek postępu */
         .progress-bar-container {
             width: 100%;
             background-color: #222;
@@ -98,31 +101,56 @@
         }
 
         .progress-bar {
-            width: 5%; /* Zmień tę wartość żeby zapełnić pasek! */
+            width: 10%; /* Tu ustawiasz napełnienie w % */
             height: 100%;
             background: linear-gradient(90deg, #fb8500, #ffb703);
             border-radius: 10px;
             animation: pulse 2s infinite;
         }
 
-        /* Licznik piw */
         .counter {
-            font-size: 2.8em;
+            font-size: 2.2em;
             font-weight: 900;
             margin: 10px 0 0 0;
             color: #fff;
             text-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
+        
+        .status-critical {
+            display: block;
+            font-size: 0.4em;
+            color: #ff4d4d;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 5px;
+            animation: blink 1.5s infinite; /* Efekt migania */
+        }
 
         .footer-note {
             margin-top: 25px;
             margin-bottom: 0;
-            font-size: 0.9em;
+            font-size: 0.85em;
             color: #777;
             font-style: italic;
         }
 
-        /* Animacje */
+        /* --- MEDIA QUERIES (DLA TELEFONÓW) --- */
+        @media (max-width: 480px) {
+            .card {
+                padding: 30px 15px; 
+            }
+            .glow-title {
+                font-size: 1.6em; /* Mniejszy tytuł, żeby się zmieścił na jednym ekranie */
+            }
+            .subtitle {
+                font-size: 0.95em;
+            }
+            .counter {
+                font-size: 1.8em;
+            }
+        }
+
+        /* --- ANIMACJE --- */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -133,15 +161,20 @@
             50% { opacity: 1; }
             100% { opacity: 0.8; }
         }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <h1 class="glow-title">Pomoż naszemu degeneratowi!</h1>
+        <h1 class="glow-title">Uratuj Michała<br>przed trzeźwością!</h1>
         
         <p class="subtitle">
-            Każdy grosz przybliża go do kolejnego 4-paka 😄
+            Tragedia w Janowie Lubelskim! Chłopak usycha. Każda wpłata to jeden uśmiech więcej na tej zmęczonej brakiem chmielu twarzy <span class="highlight">🍻</span>
         </p>
 
         <div class="image-wrapper">
@@ -149,16 +182,19 @@
         </div>
 
         <div class="stats">
-            <h2>Aktualny stan zbiórki</h2>
+            <h2>Poziom nawodnienia organizmu</h2>
             
             <div class="progress-bar-container">
                 <div class="progress-bar"></div>
             </div>
 
-            <h1 class="counter">🍺 0 / 4 piwa</h1>
+            <h1 class="counter">
+                🍺 0 / 4 piwa
+                <span class="status-critical">⚠️ Stan Krytyczny ⚠️</span>
+            </h1>
         </div>
 
-        <p class="footer-note">To oczywiście tylko żart 😎</p>
+        <p class="footer-note">Zbiórka oficjalnie niezatwierdzona przez Ministerstwo Zdrowia. Pij odpowiedzialnie 😎</p>
     </div>
 
 </body>
