@@ -1,43 +1,165 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
-<title>Michałek pokaż</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michałek pokaż</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
 
-<style>
-body {
-    font-family: Arial;
-    text-align:center;
-    background:#111;
-    color:white;
-    padding:40px;
-}
+    <style>
+        /* Główne ustawienia tła i fontu */
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            /* Ciemny, elegancki gradient w tle */
+            background: linear-gradient(135deg, #141e30, #243b55);
+            color: white;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-img {
-    max-width:300px;
-    border-radius:20px;
-}
-</style>
+        /* Główny kontener w stylu Glassmorphism (szklany panel) */
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px 30px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-in-out;
+        }
 
+        /* Świecący nagłówek w piwnym kolorze */
+        .glow-title {
+            font-size: 2.2em;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #ffb703;
+            text-shadow: 0 0 10px rgba(255, 183, 3, 0.5), 0 0 20px rgba(255, 183, 3, 0.3);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            color: #ddd;
+            margin-bottom: 30px;
+        }
+
+        /* Zdjęcie z obramowaniem i animacją najechania myszką */
+        .image-wrapper img {
+            max-width: 250px;
+            width: 100%;
+            border-radius: 20px;
+            border: 4px solid #ffb703;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-wrapper img:hover {
+            transform: scale(1.05) rotate(3deg);
+            box-shadow: 0 15px 30px rgba(255, 183, 3, 0.4);
+        }
+
+        /* Sekcja ze statystykami */
+        .stats {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 25px 20px;
+            margin-top: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .stats h2 {
+            font-size: 1.2em;
+            color: #aaa;
+            margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Pasek postępu */
+        .progress-bar-container {
+            width: 100%;
+            background-color: #222;
+            border-radius: 10px;
+            margin: 15px 0;
+            height: 25px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .progress-bar {
+            width: 5%; /* Zmień tę wartość żeby zapełnić pasek! */
+            height: 100%;
+            background: linear-gradient(90deg, #fb8500, #ffb703);
+            border-radius: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        /* Licznik piw */
+        .counter {
+            font-size: 2.8em;
+            font-weight: 900;
+            margin: 10px 0 0 0;
+            color: #fff;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .footer-note {
+            margin-top: 25px;
+            margin-bottom: 0;
+            font-size: 0.9em;
+            color: #777;
+            font-style: italic;
+        }
+
+        /* Animacje */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+    </style>
 </head>
-
 <body>
 
-<h1>🍺 Pomóż Michałowi</h1>
+    <div class="card">
+        <h1 class="glow-title">Pomoż naszemu degeneratowi!</h1>
+        
+        <p class="subtitle">
+            Każdy grosz przybliża go do kolejnego 4-paka 😄
+        </p>
 
-<p>
-Każdy grosz przybliża go do kolejnego 4-paka 😄
-</p>
+        <div class="image-wrapper">
+            <img src="foto_michal.png" alt="Zdjęcie Michała">
+        </div>
 
-<img src="foto_michal.png">
+        <div class="stats">
+            <h2>Aktualny stan zbiórki</h2>
+            
+            <div class="progress-bar-container">
+                <div class="progress-bar"></div>
+            </div>
 
-<h2>Aktualny stan</h2>
+            <h1 class="counter">🍺 0 / 4 piwa</h1>
+        </div>
 
-<h1>🍺 0 / 4 piwa</h1>
-
-<p>
-To oczywiście tylko żart 😎
-</p>
+        <p class="footer-note">To oczywiście tylko żart 😎</p>
+    </div>
 
 </body>
 </html>
